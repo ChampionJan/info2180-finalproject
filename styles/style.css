@@ -1,0 +1,149 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+section#flex-parent{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+header{
+  grid-column: 1 /span 2;
+  background-color: #1f2937;
+  height: 3rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding-left: 1em;
+}
+
+
+header p#logotitle{
+    color: #fff;
+}
+
+header img{
+    max-width: 1.2em;
+    height: auto;
+}
+
+.menu{
+    display: flex;
+    flex-flow: row nowrap;
+    padding: .5em;
+}
+header img{
+    width: 2em;
+    margin-right: 1em;
+}
+aside div.menu img{
+     width: 1.3em;
+     margin-right: .7em;
+}
+
+aside div.menu button{
+    border: none;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+section#changearea{
+    height: auto;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-self: center;
+    width:100%;
+    
+}
+section#changearea form {
+    display: flex;
+    flex-flow: column wrap;
+    width: 40%;
+    padding: 2em 3em 3em 3em;
+    margin: 4em;
+    align-self: center;
+    justify-self: center;
+}
+
+section#changearea form h1.formtitle{
+    text-align: center;
+    font-size: 2em;
+}
+
+section#changearea form div.formgrp{
+    display: flex;
+    flex-flow: column wrap;
+    margin-bottom: 0.75em;
+}
+
+section#changearea form h1.formtitle{
+    margin-bottom: 1em;
+}
+.inputnormal{
+    height:3em;
+    border-radius: 0.5em;
+    border:none;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    margin-bottom:1em;
+    padding-left: 1em;
+}
+
+button#submitbtn{
+    background: #4f46e5;
+    color: #fff;
+    height:3em;
+    border-radius: .5em;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    border: none;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding-left: 1em;
+}
+
+button#submitbtn img{
+    max-width: 2em;
+    height: auto;
+    vertical-align: middle;
+    justify-content: left;
+}
+
+button#submitbtn > span{
+    vertical-align: middle;
+    padding-left: 15.2em;
+}
+
+button#submitbtn:hover{
+    border: 2px solid  #6366f1;;
+    border-radius: .5em;;
+    cursor:pointer;
+    background: #fff;
+    color: #6366f1;
+}
+ 
+footer{
+    text-align: center;
+}
+
+footer hr{
+    border: none;
+    width: 95%;
+    margin: auto;
+    background-color: #f3f3f4;
+    height: 1px;
+    margin-bottom: 2em;
+}
+
+
+.hide{
+    display: none;
+}
