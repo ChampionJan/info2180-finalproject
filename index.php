@@ -10,6 +10,10 @@
         <script src="scripts/logout.js"> </script>
         <script src="scripts/homepage.js"> </script>
         <script src="scripts/newcontact.js"> </script>
+        <script src="scripts/newnote.js"> </script>
+        <script src="scripts/viewcontact.js"> </script>
+        <script src="scripts/viewusers.js"> </script>
+        <script src="scripts/newuser.js"> </script>
         <title>Dolphin CRM</title>
     </head>
 
@@ -26,7 +30,7 @@
                 <aside class="hide">
                     <div class="menu"><button id="home"> <img src="images/home.png"/> Home</button></div>
                     <div class="menu"><button id ="newcontact"> <img src="images/new_contact.png"/> New Contact</button></div>
-                    <div class="menu"><button id="users"> <img src="images/users.png"/>Users</button></div>
+                    <div class="menu"><button id="viewusers"> <img src="images/users.png"/>Users</button></div>
                     <hr>
                     <div class="menu"><button id="logout"> <img src="images/logout.png"/>Logout</button></div>
                 </aside>

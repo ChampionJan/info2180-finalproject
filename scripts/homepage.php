@@ -175,7 +175,7 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
     else if ($_GET['btn'] == "all"){
         $sql = "SELECT * FROM contacts";
         $stmt = $conn->query($sql);
-        $issues = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $tableconstruct= "
            <section id=\"contactlistheaduniverse\">
             <section class=\"contactlistheadparent\">
