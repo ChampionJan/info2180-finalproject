@@ -6,6 +6,9 @@
         <meta charset ="UTF-8"/>
         <meta name= "viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet"  href="styles/style.css"/>
+        <script src="scripts/login.js"> </script>
+        <script src="scripts/logout.js"> </script>
+        <script src="scripts/homepage.js"> </script>
         <title>main</title>
     </head>
 
