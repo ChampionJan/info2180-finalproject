@@ -9,7 +9,8 @@
         <script src="scripts/login.js"> </script>
         <script src="scripts/logout.js"> </script>
         <script src="scripts/homepage.js"> </script>
-        <title>main</title>
+        <script src="scripts/newcontact.js"> </script>
+        <title>Dolphin CRM</title>
     </head>
 
     <body>
