@@ -21,7 +21,7 @@
 
                 <aside class="hide">
                     <div class="menu"><button id="home"> <img src="images/home.png"/> Home</button></div>
-                    <div class="menu"><button id ="newcontact"> <img src="new_contact/add-friend.png"/> New Contact</button></div>
+                    <div class="menu"><button id ="newcontact"> <img src="images/new_contact.png"/> New Contact</button></div>
                     <div class="menu"><button id="users"> <img src="images/users.png"/>Users</button></div>
                     <hr>
                     <div class="menu"><button id="logout"> <img src="images/logout.png"/>Logout</button></div>
