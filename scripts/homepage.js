@@ -26,7 +26,7 @@ window.addEventListener("load",event=>{
         contactlink.onclick = event => {
             event.preventDefault();
             let id = issuelink.getAttribute("href");
-            let contactUrl = new URL('http://localhost/info2180-finalproject/scripts/singlecontact.php');
+            let contactUrl = new URL('http://localhost/info2180-finalproject/scripts/viewcontact.php');
             let params = {contactid: id};
             contactUrl.search = new URLSearchParams(params).toString();
             fetch(contactUrl, {
