@@ -12,11 +12,11 @@ echo " <form id='newuserform'>
             <div class='formstatus'> </div>
             <div class='formgrp'> 
                 <label>Firstname</label>
-                <input id ='fname'class='inputnormal' type='text' placeholder='Jane' name='firstname' required>
+                <input id ='firstname'class='inputnormal' type='text' placeholder='Jane' name='firstname' required>
             </div>
             <div class='formgrp'> 
                 <label>Lastname</label>
-                <input id='lname'class='inputnormal' type='text' placeholder='Doe' name='lastname' required>
+                <input id='lastname'class='inputnormal' type='text' placeholder='Doe' name='lastname' required>
             </div>
             <div class='formgrp'> 
                 <label>Email</label>

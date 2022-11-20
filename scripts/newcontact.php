@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $jsn = file_get_contents('php://input');
     $data = json_decode($jsn);
     $cleanedtitle = filter_var($data->title, FILTER_SANITIZE_SPECIAL_CHARS);
+    $cleanedtitle .= ".";
     $cleanedfirstname = filter_var($data->firstname, FILTER_SANITIZE_SPECIAL_CHARS);
     $cleanedlastname = filter_var($data->lastname, FILTER_SANITIZE_SPECIAL_CHARS);
     $cleanedemail = filter_var($data->email, FILTER_SANITIZE_SPECIAL_CHARS);
@@ -28,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $fname= $cleanedassign[0];
     $lname= $cleanedassign[1];
     date_default_timezone_set('US/Eastern');
-    $currentdate = date("Y-m-d");
 
     $idsql = "SELECT * FROM users WHERE firstname = :fname AND lastname = :lname";
     $idstmt =  $conn -> prepare($idsql);
@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $user = $idstmt->fetch(PDO::FETCH_ASSOC);
     $cleanedassign = $user['id'];
    
-    $sql = "INSERT INTO contacts (title, firstname, lastname, email, telephone, company, type, assigned_to, created_by, created_at, updated_at) 
-    VALUES (:title, :firstname, :lastname, :email, :telephone, :company, :type, :assigned_to, :createdby, :created_at, :updated_at)";
+    $sql = "INSERT INTO contacts (title, firstname, lastname, email, telephone, company, type, assigned_to, created_by) 
+    VALUES (:title, :firstname, :lastname, :email, :telephone, :company, :type, :assigned_to, :createdby)";
 
      $prep = $conn -> prepare($sql);
      
@@ -54,9 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         ':company' => $cleanedcompany, 
         ':type' => $cleanedtype, 
         ':assigned_to' => $cleanedassign, 
-        ':createdby' => $createdby, 
-        ':created_at' => $currentdate,
-        ':updated_at' => $currentdate) ) ) 
+        ':createdby' => $createdby) ) ) 
         {
         echo "OK";
     }

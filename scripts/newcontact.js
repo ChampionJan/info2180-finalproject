@@ -9,7 +9,7 @@ window.addEventListener("load", event =>{
         if(document.contains(document.getElementById("contactform"))){
             const addcontactbtn = document.querySelector("form#contactform button#addcontactbtn");
             const cleanUrl2 = "scripts/newcontact.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
-            const title = document.querySelector("form#contactform input#title");
+            const title = document.querySelector("form#contactform select#title");
             const firstname = document.querySelector("form#contactform input#firstname");
             const lastname = document.querySelector("form#contactform input#lastname");
             const email = document.querySelector("form#contactform input#email");

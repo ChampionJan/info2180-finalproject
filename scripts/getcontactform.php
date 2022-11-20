@@ -18,13 +18,13 @@ $formconstruct =
             <div class='newcontactstat'> </div>
             <div class='formstatus'> </div>
             <div class='formgrp'> 
-                <label for='Title'>Title</label>
+                <label for='title'>Title</label>
                 <select class='inputnormal' name='title' id='title'>
-                    <option value='Mr.'>Mr.</option>
-                    <option value='Ms.'>Ms.</option>
-                    <option value='Mrs.'>Mrs.</option>
-                    <option value='Dr.'>Dr.</option>
-                    <option value='Prof.'>Prof.</option>
+                    <option value='Mr'>Mr.</option>
+                    <option value='Ms'>Ms.</option>
+                    <option value='Mrs'>Mrs.</option>
+                    <option value='Dr'>Dr.</option>
+                    <option value='Prof'>Prof.</option>
                 </select>
             </div>
             <div class='formgrp'> 

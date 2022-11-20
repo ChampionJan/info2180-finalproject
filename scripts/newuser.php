@@ -6,7 +6,6 @@ $cleanedlastname="";
 $cleanedemail= "";
 $password = "";
 $cleanedrole= "";
-$datejoined = date('Y/m/d H:i:s');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['first_name'], $_SESSION['last_name'])){
 
@@ -28,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['first_name'], $_SES
     }
    
     $password = password_hash($data->password, PASSWORD_DEFAULT);
-    $checksql = "SELECT * FROM userstable WHERE email= :email";
+    $checksql = "SELECT * FROM users WHERE email= :email";
     $stmt = $conn->prepare($checksql);
     $stmt->execute(array(':email' =>  $cleanedemail));
     $record = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -37,12 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['first_name'], $_SES
         echo"3";
     }
     else{
-        $addsql = "INSERT INTO users (firstname, lastname, password, email, date_joined, role) 
-        VALUES ( :firstname, :lastname, :password, :email, :date_joined, :role)";
+        $addsql = "INSERT INTO users (firstname, lastname, password, email, role) 
+        VALUES ( :firstname, :lastname, :password, :email, :role)";
 
         $prep = $conn -> prepare($addsql);
 
-        if ($prep->execute( array(':firstname' => $cleanedfirstname, ':lastname' => $cleanedlastname, ':password'=>$password, ':email' => $cleanedemail, ':date_joined' => $datejoined, ':role' => $cleanedrole))){
+        if ($prep->execute( array(':firstname' => $cleanedfirstname, ':lastname' => $cleanedlastname, ':password'=>$password, ':email' => $cleanedemail, ':role' => $cleanedrole))){
             echo "4";
         }
 

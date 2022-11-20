@@ -1,23 +1,37 @@
 window.addEventListener("load", event => {
-    const adduser =  document.querySelector("changearea section#userlistheaduniverse section.userlistheadparent button#createuserbtn");
+    //const adduser =  document.querySelector("section#changearea section#userlistheaduniverse section.userlistheadparent button#createuserbtn");
     const changearea= document.querySelector("section#changearea");
-    const cleanUrl = "scripts/getuserform.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
-    const parserObj = new DOMParser();
+    //const cleanUrl = "scripts/getuserform.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
+    //const parserObj = new DOMParser();
 
+    setInterval( ()=>{
 
-    let userForm = setInterval( ()=>{
-        if(document.contains(document.getElementById("newuserform"))){
-            const createuserbtn = document.querySelector("form#newuserform button#createuserbtn");
+        const adduser =  document.querySelector("section#changearea section#userlistheaduniverse section.userlistheadparent button#createuserbtn");
+        const getformUrl = "scripts/getuserform.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
+        if (document.contains(adduser)){
+            adduser.onclick= (event) =>{
+                fetch(getformUrl, {method : 'GET'})
+                .then(resp => resp.text())
+                .then(resp=>{
+                    changearea.innerHTML = resp;
+                })
+            }   
+        }
+    },1000);      
+    
+    let newuserform = setInterval( ()=>{
+        if (document.contains(document.getElementById("newuserform"))){
+            const createuserbtn = document.querySelector("form#newuserform button#adduserbtn");
             const cleanUrl = "scripts/newuser.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
-            const fname = document.querySelector("form#newuserform input#firstname");
-            const lname = document.querySelector("form#newuserform input#lastname");
+            const firstname = document.querySelector("form#newuserform input#firstname");
+            const lastname = document.querySelector("form#newuserform input#lastname");
             const email = document.querySelector("form#newuserform input#email");
             const password = document.querySelector("form#newuserform input#password");
             const role = document.querySelector("form#newuserform select#role");
             const formstatus = document.querySelector("section#changearea form div.adduserstat");
             const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
             const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
-            const errors =[
+            let errors =[
                 "Your email is invalid, please check and try again.",
                 "Your first name is not of the correct format. Please check and try again.",
                 "Your last name is not of the correct format. Please check and try again.",
@@ -94,10 +108,11 @@ window.addEventListener("load", event => {
                 }
                 else{
                     const formData = {
-                        firstname: fname.value,
-                        lastname: lname.value,
+                        firstname: firstname.value,
+                        lastname: lastname.value,
                         password: password.value,
                         email: email.value,
+                        role: role.value,
                     };
                     fetch(cleanUrl, {
                         method : 'POST',
@@ -126,24 +141,10 @@ window.addEventListener("load", event => {
                         else{
                             formstatus.classList.remove("hide");
                             formstatus.innerHTML = resp; 
-                        }
-                    })
+                            }
+                        })
                 }
             }
-            
-        
         }
     },1000);
-
-
-   adduser.onclick = (event) =>{
-        event.preventDefault();
-        changearea.innerHTML = "";
-        fetch(cleanUrl, {method : 'GET'})
-        .then(resp => resp.text())
-        .then(resp=>{
-            //let parsedDom = parserObj.parseFromString(resp, "text/html");
-            changearea.innerHTML = resp;
-        })
-    }
-});
+})
