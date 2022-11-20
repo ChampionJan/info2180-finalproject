@@ -2,6 +2,8 @@ window.addEventListener("load", event => {
     const emailField = document.querySelector("input[type='email']");
     const passwordField = document.querySelector("input[type='password']");
     const formstatus = document.querySelector("section#changearea form div.formstatus");
+    const footer = document.getElementById("footer");
+    footer.classList.add("hide");
     formstatus.classList.add("hide");
     const submitbtn = document.querySelector("section#changearea form button#submitbtn");
     const changearea= document.querySelector("section#changearea");

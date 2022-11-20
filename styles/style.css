@@ -32,6 +32,20 @@ header img{
     height: auto;
 }
 
+.centralstyle{
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100vh;
+}
+
+.asidestyle{
+    display: flex;
+    flex-flow: column wrap;
+    background: #ececec;
+    padding-top: 1em;
+    width:15%;
+}
+
 .menu{
     display: flex;
     flex-flow: row nowrap;

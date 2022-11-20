@@ -49,13 +49,11 @@
                     </form> 
                 </section>
 
-           </div>
-
-           <footer>
-                <hr>
-                <p>Copyright &copy; 2022 Dolphin CRM</p>
-            </footer>
-
+                <footer id="footer">
+                    <hr>
+                    <p>Copyright &copy; 2022 Dolphin CRM</p>
+                </footer>
+            </div>
         </section>
     </body>
 
