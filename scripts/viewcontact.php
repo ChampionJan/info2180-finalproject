@@ -4,6 +4,7 @@ require "dbconnect.php";
 if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
     $id= $_GET['contactid'];
 
+    $_SESSION['contactid'] = $id;
   $contactsql = "SELECT * FROM contacts WHERE id = :id";
   $contactstmt = $conn -> prepare($contactsql);
   $contactstmt->execute(array(
@@ -39,15 +40,23 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
 
   if($updated == "0000-00-00 00:00:00"){
     $updated = "- -";
+  } else{
+    $updated= date('F n, Y',strtotime($updated));
   }
+
+  $otherrole = "Support";
+  if($contact['type'] == "Support"){
+    $otherrole = "Sales Lead";
+  }
+
   $singlecontact = "
                <div id=\"contactparent\"> 
                 <section id= \"contacthead\"> 
                     <h2> {$contact['title']} {$contact['firstname']} {$contact['lastname']}</h2>
                     <span>Created on {$createdday} by {$creator['firstname']} {$creator['lastname']} <br> </span>
-                    <span>Updated on {$updated}</span>
+                    <span id=\"updated\">Updated on {$updated}</span>
                     <button chk =\"{$contact['id']}\"id=\"assigntome\"> Assign to me </button>
-                    <button chk =\"{$contact['id']}\" id=\"switchsaleslead\"> Switch to Sales Lead </button>
+                    <button chk =\"{$contact['id']}\" id=\"switchtoother\"> Switch to {$otherrole} </button>
                 </section>
                 <section id=\"contactinfo\"> 
                     <div class=\"infogrp\">
@@ -64,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
                     </div>
                     <div class=\"infogrp\">
                         <span class=\"label\">Assigned To</span>
-                        <span>{$assigneduser['firstname']} {$assigneduser['lastname']}</span>
+                        <span id=\"assigned\">{$assigneduser['firstname']} {$assigneduser['lastname']}</span>
                     </div>
                 </section>
                 

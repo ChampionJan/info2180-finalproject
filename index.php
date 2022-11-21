@@ -14,6 +14,7 @@
         <script src="scripts/viewcontact.js"> </script>
         <script src="scripts/viewusers.js"> </script>
         <script src="scripts/newuser.js"> </script>
+        <script src="scripts/updatecontact.js"> </script>
         <title>Dolphin CRM</title>
     </head>
 

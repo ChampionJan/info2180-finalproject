@@ -2,7 +2,6 @@
 session_start();
 require "dbconnect.php";
 $cleanedcomment= "";
-$status = "Open";
 $createdby = $_SESSION['uid'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -20,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
      
 
     if ($prep -> execute( array(
-        ':contact_id' => $cleanedcontact_id,
+        ':contact_id' => $_SESSION['contactid'],
         ':comment' => $cleanedcomment,
         ':createdby' => $createdby, 
         ':created_at' => $currentdate) ) ) 
