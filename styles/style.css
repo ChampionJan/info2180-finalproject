@@ -183,7 +183,6 @@ footer hr{
     margin-top: 1em;
     margin-bottom: 1em;
     text-align: left;
-    border-collapse: collapse;
 }
 
 table#contacttable thead{
@@ -205,8 +204,6 @@ table#contacttable tr td{
     margin-bottom: 2em;
     margin-top: 2em;
     padding-bottom: 1em;
-    border-bottom: solid #ececec .1em; 
-
 }
 
 table#contacttable tr td:nth-child(4){
@@ -279,6 +276,15 @@ section#filter span{
 section.contactlistfootparent table{
     width: 95%;
     border-spacing: 0;
+    border-radius: 0.2em;
     border: solid #f2f3f5 .1em;
     justify-content: center;
 }
+
+section.contactlistfootparent table td, section.contactlistfootparent table th{
+    border-bottom: solid #f2f3f5 .1em;
+}
+
+section.contactlistfootparent table tr:last-child > td{
+    border-bottom: none;
+  }
