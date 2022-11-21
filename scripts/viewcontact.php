@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
                         $namesql = "SELECT * FROM contacts WHERE contact_id = :contact_id";
                         $namestmt = $conn -> prepare($namesql);
                         $namestmt->execute(array(
-                            ':id' => $supportcontact['assigned_to']
+                            ':id' => $contactnote['id']
                         ));
                         $user = $namestmt->fetch(PDO::FETCH_ASSOC);
         

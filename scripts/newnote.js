@@ -60,7 +60,7 @@ window.addEventListener("load", event =>{
         }
     }, 1000 );
 
-    newform.onclick = (event) =>{
+    newnote.onclick = (event) =>{
         event.preventDefault();
         changearea.innerHTML = "";
         fetch(cleanUrl, {method : 'GET'})

@@ -101,7 +101,7 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                         $typeid = "Support";
                     }
                     else if($salesleadscontact['type'] == "Sales Lead"){
-                        $typeid = "Sales Lead";
+                        $typeid = "SalesLead";
                     }
                     $capitaltype = strtoupper($salesleadscontact['type']);
                     $tableconstruct .= 
@@ -157,7 +157,7 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                         $typeid = "Support";
                     }
                     else if($mycontact['type'] == "Sales Lead"){
-                        $typeid = "Sales Lead";
+                        $typeid = "SalesLead";
                     }
                     $capitaltype = strtoupper($mycontact['type']);
                     $tableconstruct .= 
@@ -209,7 +209,7 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                         $typeid = "Support";
                     }
                     else if($contact['type'] == "Sales Lead"){
-                        $typeid = "Sales Lead";
+                        $typeid = "SalesLead";
                     }
                     $capitaltype = strtoupper($contact['type']);
                     $tableconstruct .= 

@@ -3,7 +3,6 @@ window.addEventListener("load", event => {
     const passwordField = document.querySelector("input[type='password']");
     const formstatus = document.querySelector("section#changearea form div.formstatus");
     const footer = document.getElementById("footer");
-    footer.classList.add("hide");
     formstatus.classList.add("hide");
     const submitbtn = document.querySelector("section#changearea form button#submitbtn");
     const changearea= document.querySelector("section#changearea");
@@ -80,6 +79,7 @@ window.addEventListener("load", event => {
                     document.querySelector("div#central").classList.add("centralstyle");
                     changearea.style.width="85%";
                     changearea.innerHTML = "";
+                    footer.classList.add("hide");
                     const listUrl = new URL('http://localhost/info2180-finalproject/scripts/homepage.php');
                     let params = {btn: "all"};
                     listUrl.search = new URLSearchParams(params).toString();
