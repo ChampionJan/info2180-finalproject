@@ -32,6 +32,7 @@ window.addEventListener("load", (event)=>{
                     updateContactUrl = new URL(`http://localhost/info2180-finalproject/scripts/updatecontact.php`);
                     let params = {check: "switchtoother", contactid: assigntomeval};
                     updateContactUrl.search = new URLSearchParams(params).toString();
+                    let buttoncheck = setInterval( ()=>{
                     fetch(updateContactUrl, {
                         method : 'POST',
                     })
@@ -39,8 +40,10 @@ window.addEventListener("load", (event)=>{
                     .then(resp=>{
                         
                         updated.innerHTML= resp.substring(0, resp.indexOf('*'));
-                        assigned.innerHTML = resp.substring(resp.indexOf('*') + 1);
-                    })  
+                        switchtoother.innerText = switchtoother.textContent = resp.substring(resp.indexOf('*') + 1);
+                        clearInterval(buttoncheck);
+                        })
+                    }, 1000);  
                 }   
         }
     }, 1000);

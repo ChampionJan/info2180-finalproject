@@ -64,14 +64,14 @@ else if( $check == "switchtoother"){
         ':id' => $contactid
     ));
  
-    echo "Updated on {$updatedday} * <span id=\"statuspan\">Switch to {$typesaleslead}</span>";
+    echo "Updated on {$updatedday} * Switch to {$typesaleslead}";
    } else{
     $typestmt->execute(array(
         ':type' => $typesupport,
         ':id' => $contactid
     ));
  
-    echo "Updated on {$updatedday} * <span id=\"statuspan\">Switch to {$typesupport}</span>";
+    echo "Updated on {$updatedday} * Switch to {$typesupport}";
    }
    
 
