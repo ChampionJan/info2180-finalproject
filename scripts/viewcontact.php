@@ -27,22 +27,25 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
         ':id' => $contact['created_by']
   ));
   $creator = $creatorstmt->fetch(PDO::FETCH_ASSOC);
-  $createdday = date('F jS, Y',strtotime($contact['created']));
+  $createdday = date('F n, Y',strtotime($contact['created_at']));
 
   $contact_id = $id;
   $notessql = "SELECT * FROM notes WHERE contact_id = :contact_id";
         $notesstmt = $conn->prepare($notessql);
         $notesstmt->execute(array(
-            ':type' => $type
+            ':contact_id' => $contact_id
         ));
         $contactnotes = $notesstmt->fetchAll(PDO::FETCH_ASSOC);
 
+  if($updated == "0000-00-00 00:00:00"){
+    $updated = "- -";
+  }
   $singlecontact = "
                <div id=\"contactparent\"> 
                 <section id= \"contacthead\"> 
                     <h2> {$contact['title']} {$contact['firstname']} {$contact['lastname']}</h2>
-                    <span>Created on {$createdday} at {$createdtime} by {$creator['firstname']} {$creator['lastname']} </span>
-                    <span>Updated on {$updatedday}</span>
+                    <span>Created on {$createdday} by {$creator['firstname']} {$creator['lastname']} <br> </span>
+                    <span>Updated on {$updated}</span>
                     <button chk =\"{$contact['id']}\"id=\"assigntome\"> Assign to me </button>
                     <button chk =\"{$contact['id']}\" id=\"switchsaleslead\"> Switch to Sales Lead </button>
                 </section>
@@ -78,9 +81,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
                         $user = $namestmt->fetch(PDO::FETCH_ASSOC);
         
                         $singlecontact .= 
-                        "<p> {$supportcontact['created_by']} </p>
-                         <p> {$supportcontact['comment']} </p>
-                         <p> {$supportcontact['created_at']}</p>";  
+                        "<p> {$contactnote['created_by']} </p>
+                         <p> {$contactnote['comment']} </p>
+                         <p> {$contactnote['created_at']}</p>";  
                     }
 
                     $singlecontact .= "</section>

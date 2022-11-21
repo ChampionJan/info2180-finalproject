@@ -9,12 +9,12 @@ window.addEventListener("load", event =>{
         if(document.contains(document.getElementById("noteform"))){
             const addnotebtn = document.querySelector("form#noteform button#addnotebtn");
             const cleanUrl2 = "scripts/newnote.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
-            const comment = document.querySelector("form#noteform input#comment");
+            let comment = document.getElementById("comment");
             const formstatus = document.querySelector("section#changearea form#noteform div.newnotestat");
 
             addnotebtn.onclick = (event)=>{
                 event.preventDefault();
-                if (comment.value.length == 0){
+                if (parseInt(comment.value.length) == 0){
                     formstatus.classList.remove("hide");
                     formstatus.classList.remove("success");
                     formstatus.classList.add("fail");

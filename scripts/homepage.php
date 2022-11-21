@@ -12,9 +12,8 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
         ));
         $supportcontacts = $supportstmt->fetchAll(PDO::FETCH_ASSOC);
         $tableconstruct= "
-           <section id=\"contactlistheaduniverse\">
             <section class=\"contactlistheadparent\">
-                <h1 class=\"contactlisthead\"> Dashboard </h1>
+                <h2 class=\"contactlisthead\"> Dashboard </h2>
                 <button id=\"createcontactbtn\"> Add Contact </button>
             </section>
             <section id=\"filter\"> 
@@ -23,7 +22,7 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                 <button id=\"SalesLeads\"> Sales Leads </button>
                 <button id=\"Support\"> Support </button>
                 <button id=\"assigned\"> Assigned to me </button>
-            </section></section>
+            </section>
             <table id='contacttable'>
                 <thead>
                     <th>Name</th> 
@@ -45,15 +44,15 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                         $typeid = "Support";
                     }
                     else if($supportcontact['type'] == "Sales Lead"){
-                        $typeid = "Sales Lead";
+                        $typeid = "SalesLead";
                     }
-    
+                    $capitaltype = strtoupper($supportcontact['type']);
                     $tableconstruct .= 
                     "<tr class=\"temprow\"> 
-                     <td><span class=\"fullname\">{$supportcontact['title']} {$supportcontact['firstname']} {$supportcontact['lastname']}</span></td>
+                     <td><b><span class=\"fullname\">{$supportcontact['title']} {$supportcontact['firstname']} {$supportcontact['lastname']}</span></b></td>
                      <td>{$supportcontact['email']} </td>
                      <td>{$supportcontact['company']} </td>
-                     <td id={$typeid}><span>{$supportcontact['type']}</span><a href=\"{$supportcontact['id']}\"> View </a></td>
+                     <td id={$typeid}><span>{$capitaltype}</span><a href=\"{$supportcontact['id']}\"> View </a></td>
                     </tr>";  
                  }
     
@@ -71,7 +70,7 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
         $tableconstruct= "
            <section id=\"contactlistheaduniverse\">
             <section class=\"contactlistheadparent\">
-                <h1 class=\"contactlisthead\"> Dashboard </h1>
+                <h2 class=\"contactlisthead\"> Dashboard </h2>
                 <button id=\"createcontactbtn\"> Add Contact </button>
             </section>
             <section id=\"filter\"> 
@@ -104,13 +103,13 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                     else if($salesleadscontact['type'] == "Sales Lead"){
                         $typeid = "Sales Lead";
                     }
-    
+                    $capitaltype = strtoupper($salesleadscontact['type']);
                     $tableconstruct .= 
                     "<tr class=\"temprow\"> 
                      <td><span class=\"fullname\">{$salesleadscontact['title']} {$salesleadscontact['firstname']} {$salesleadscontact['lastname']}</span></td>
                      <td>{$salesleadscontact['email']} </td>
                      <td>{$salesleadscontact['company']} </td>
-                     <td id={$typeid}><span>{$salesleadscontact['type']}</span><a href=\"{$salesleadscontact['id']}\"> View </a></td>
+                     <td id={$typeid}><span>{$capitaltype}</span><a href=\"{$salesleadscontact['id']}\"> View </a></td>
                     </tr>";  
                  }
     
@@ -128,7 +127,7 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
         $tableconstruct= "
            <section id=\"contactlistheaduniverse\">
             <section class=\"contactlistheadparent\">
-                <h1 class=\"contactlisthead\"> Dashboard </h1>
+                <h2 class=\"contactlisthead\"> Dashboard </h2>
                 <button id=\"createcontactbtn\"> Add Contact </button>
             </section>
             <section id=\"filter\"> 
@@ -160,12 +159,13 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                     else if($mycontact['type'] == "Sales Lead"){
                         $typeid = "Sales Lead";
                     }
+                    $capitaltype = strtoupper($mycontact['type']);
                     $tableconstruct .= 
                     "<tr class=\"temprow\">
                      <td><span class=\"fullname\">{$mycontact['title']} {$mycontact['firstname']} {$mycontact['lastname']}</span></td>
                      <td>{$mycontact['email']} </td>
                      <td>{$mycontact['company']} </td>
-                     <td id={$typeid}><span>{$mycontact['type']}</span><a href=\"{$mycontact['id']}\"> View </a></td>
+                     <td id={$typeid}><span>{$capitaltype}</span><a href=\"{$mycontact['id']}\"> View </a></td>
                     </tr>";  
                  }
     
@@ -177,18 +177,18 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
         $stmt = $conn->query($sql);
         $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $tableconstruct= "
-           <section id=\"contactlistheaduniverse\">
             <section class=\"contactlistheadparent\">
-                <h1 class=\"contactlisthead\"> Dashboard </h1>
+                <h2 class=\"contactlisthead\"> Dashboard </h2>
                 <button id=\"createcontactbtn\"> Add Contact </button>
             </section>
+            <section class=\"contactlistfootparent\">
             <section id=\"filter\"> 
                 <span>Filter by: </span>
                 <button id=\"all\"> All </button>
                 <button id=\"SalesLeads\"> Sales Leads </button>
                 <button id=\"Support\"> Support </button>
                 <button id=\"assigned\"> Assigned to me </button>
-            </section></section>
+            </section>
             <table id='contacttable'>
                 <thead>
                     <th>Name</th> 
@@ -211,16 +211,17 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                     else if($contact['type'] == "Sales Lead"){
                         $typeid = "Sales Lead";
                     }
+                    $capitaltype = strtoupper($contact['type']);
                     $tableconstruct .= 
                     "<tr class=\"temprow\"> 
                     <td><span class=\"fullname\">{$contact['title']} {$contact['firstname']} {$contact['lastname']}</span></td>
                     <td>{$contact['email']} </td>
                     <td>{$contact['company']} </td>
-                    <td id={$typeid}><span>{$contact['type']}</span><a href=\"{$contact['id']}\"> View </a></td>
+                    <td id={$typeid}><span>{$capitaltype}</span><a href=\"{$contact['id']}\"> View </a></td>
                     </tr>";  
                  }
     
-                 $tableconstruct.=  "</table>";
+                 $tableconstruct.=  "</table></section>";
                 
 
     }
