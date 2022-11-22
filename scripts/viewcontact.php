@@ -38,6 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
         ));
         $contactnotes = $notesstmt->fetchAll(PDO::FETCH_ASSOC);
 
+
+  $usersql = "SELECT * FROM users";
+  $usersstmt = $conn->prepare($usersql);
+  $usersstmt->execute();
+  $allusers = $usersstmt->fetchAll(PDO::FETCH_ASSOC);
+
   if($updated == "0000-00-00 00:00:00"){
     $updated = "- -";
   } else{
@@ -82,17 +88,29 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
                     <hr>";
 
                     foreach($contactnotes as $contactnote){
-                        $namesql = "SELECT * FROM contacts WHERE contact_id = :contact_id";
+                        /*$namesql = "SELECT * FROM contacts WHERE contact_id = :contact_id";
                         $namestmt = $conn -> prepare($namesql);
                         $namestmt->execute(array(
-                            ':id' => $contactnote['id']
+                            ':contact_id' => $contactnote['id']
                         ));
-                        $user = $namestmt->fetch(PDO::FETCH_ASSOC);
-        
-                        $singlecontact .= 
-                        "<p> {$contactnote['created_by']} </p>
-                         <p> {$contactnote['comment']} </p>
-                         <p> {$contactnote['created_at']}</p>";  
+                        $user = $namestmt->fetch(PDO::FETCH_ASSOC); */
+
+                        if($contactnote['contact_id'] == $contact['id']){
+                            $notecreatorname = "";
+                            $notedate = date('F n, Y',strtotime($contactnote['created_at']));
+                            $notetime = date('g a',strtotime($contactnote['created_at']));
+                            $notecreator = $contactnote['created_by'];
+                            foreach($allusers as $oneuser){
+                                if($oneuser['id'] == $notecreator){
+                                    $notecreatorname .= $oneuser['firstname']." ".$oneuser['lastname'];
+                                    break;
+                                }
+                            }
+                            $singlecontact .= 
+                            "<p> {$notecreatorname} </p>
+                             <p> {$contactnote['comment']} </p>
+                             <p> {$notedate} at {$notetime}</p>";
+                        }  
                     }
 
                     $singlecontact .= "</section>

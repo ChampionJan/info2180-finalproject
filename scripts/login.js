@@ -68,12 +68,23 @@ window.addEventListener("load", event => {
             })
             .then(resp => resp.text())
             .then(resp =>{
-                if (parseInt(resp) === 0 || parseInt(resp) === 1 || parseInt(resp) === 2 || parseInt(resp) === 3){
+                let first = resp.substring(0, resp.indexOf('*'));
+                let role = resp.substring(resp.indexOf('*') + 1);
+                if (parseInt(first) === 0 || parseInt(first) === 1 || parseInt(first) === 2 || parseInt(first) === 3){
                     formstatus.classList.remove("hide");
                     formstatus.classList.add("fail");
                     formstatus.innerHTML = errors[parseInt(resp)];
                 }
-                else if (parseInt(resp) === 4){
+                else if (parseInt(first) === 4){
+                    let usercheck = setInterval( ()=>{
+                        if (document.contains(document.getElementById("viewusers"))){
+                            clearInterval(usercheck);
+                            if(role == "Member"){
+                                document.getElementById("adminonly").classList.add("hide");
+                            }
+                        }
+                    }, 0);
+
                     document.getElementsByTagName("aside")[0].classList.remove("hide");
                     document.getElementsByTagName("aside")[0].classList.add("asidestyle");
                     document.querySelector("div#central").classList.add("centralstyle");

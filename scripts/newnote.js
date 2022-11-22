@@ -44,12 +44,12 @@ window.addEventListener("load", event =>{
                         if (resp == "OK"){
                             formstatus.classList.add("success");
                             formstatus.classList.remove("fail");
-                            formstatus.innerHTML = "New contact added successfully!"
+                            formstatus.innerHTML = "New note added successfully!"
                         }
                         else if(resp == "NO"){
                             formstatus.classList.remove("success");
                             formstatus.classList.add("fail");
-                            formstatus.innerHTML = "Unable to create contact.";
+                            formstatus.innerHTML = "Unable to create note.";
                         }
 
                         comment.classList.remove("txtAErr");

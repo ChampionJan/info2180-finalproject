@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" ){
     $data = json_decode($jsn);
     $cleanedemail = filter_var($data->email, FILTER_VALIDATE_EMAIL);
     if (!filter_var($cleanedemail, FILTER_VALIDATE_EMAIL)){
-        echo "2";
+        echo "2* fail";
     }
     else{
         $password = $data->password;
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" ){
 
         if ($stmt->rowCount() == 1){
             if (!password_verify($password, $record["password"])){
-                echo "1";
+                echo "1* fail";
             }
             else{
                 session_start(); 
@@ -30,15 +30,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" ){
                 $_SESSION['last_name'] = $record['lastname'];
                 $_SESSION['role'] = $record['role'];
                 if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
-                    echo "4";
+                    echo "4*" .$record['role'];
                 }
                 else{
-                    echo "3";
+                    echo "3* fail";
                 }
             } 
         }
         else{
-            echo "0";
+            echo "0* fail";
         }
     }
 }

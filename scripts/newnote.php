@@ -10,10 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $data = json_decode($jsn);
     $cleanedcomment = filter_var($data->comment, FILTER_SANITIZE_SPECIAL_CHARS);
     date_default_timezone_set('US/Eastern');
-    $currentdate = date("Y-m-d");
    
-    $sql = "INSERT INTO notes (contact_id, comment, created_by, created_at) 
-    VALUES (:contact_id, :comment, :createdby, :created_at)";
+    $sql = "INSERT INTO notes (contact_id, comment, created_by) 
+    VALUES (:contact_id, :comment, :createdby)";
 
      $prep = $conn -> prepare($sql);
      
@@ -21,8 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     if ($prep -> execute( array(
         ':contact_id' => $_SESSION['contactid'],
         ':comment' => $cleanedcomment,
-        ':createdby' => $createdby, 
-        ':created_at' => $currentdate) ) ) 
+        ':createdby' => $createdby) ) ) 
         {
         echo "OK";
     }
