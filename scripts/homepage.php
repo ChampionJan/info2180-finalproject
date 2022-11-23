@@ -184,7 +184,7 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
             <section class=\"contactlistfootparent\">
             <section id=\"filter\"> 
                 <span>Filter by: </span>
-                <button id=\"all\"> All </button>
+                <button id=\"all\" class=\"active\"> All </button>
                 <button id=\"SalesLeads\"> Sales Leads </button>
                 <button id=\"Support\"> Support </button>
                 <button id=\"assigned\"> Assigned to me </button>
