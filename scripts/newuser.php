@@ -16,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['first_name'], $_SES
     $cleanedlastname = filter_var($data->lastname, FILTER_SANITIZE_SPECIAL_CHARS);
     $cleanedrole = filter_var($data->role, FILTER_SANITIZE_SPECIAL_CHARS);
 
+    date_default_timezone_set('US/Eastern');
+    
     if (!filter_var($cleanedemail, FILTER_VALIDATE_EMAIL)){
         echo"0";
     }

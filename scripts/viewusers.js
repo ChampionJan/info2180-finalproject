@@ -10,8 +10,8 @@ window.addEventListener("load", event => {
         fetch(cleanUrl, {method : 'GET'})
         .then(resp => resp.text())
         .then(resp=>{
-            let parsedDom = parserObj.parseFromString(resp, "text/html");
-            changearea.appendChild(parsedDom.getElementById("userlistheaduniverse"));
+            changearea.innerHTML =resp;
+            document.querySelector("table#usertable").classList.add("usertable");
         })
     }
 });

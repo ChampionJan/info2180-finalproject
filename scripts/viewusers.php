@@ -7,11 +7,11 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
         $stmt = $conn->query($sql);
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $usertableconstruct= "
-           <section id=\"userlistheaduniverse\">
             <section class=\"userlistheadparent\">
-                <h1 class=\"userlisthead\"> Users </h1>
+                <h2 class=\"userlisthead\"> Users </h2>
                 <button id=\"createuserbtn\"> Add User </button>
             </section>
+            <section class=\"userlistfootparent\">
             <table id='usertable'>
                 <thead>
                     <th>Name</th> 
@@ -21,20 +21,19 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                 </thead>";
     
                 foreach($users as $user){
-                    $namesql = "SELECT * FROM users WHERE id = :id";
-                    $namestmt = $conn -> prepare($namesql);
-                    $user = $namestmt->fetch(PDO::FETCH_ASSOC);
+
+                    $properrole = ucfirst($user['role']);
+                    $userdate = date('Y-m-d h:i',strtotime($user['created_at']));
                     $usertableconstruct .= 
                     "<tr class=\"temprow\"> 
-                    <td><span class=\"fullname\">{$user['title']} {$user['firstname']} {$user['lastname']}</span></td>
+                    <td><span class=\"fullname\">{$user['firstname']} {$user['lastname']}</span></td>
                     <td>{$user['email']} </td>
-                    <td>{$user['role']} </td>
-                    <td>{$user['created_at']} </td>
+                    <td>{$properrole} </td>
+                    <td>{$userdate} </td>
                     </tr>";  
                  }
     
-                 $usertableconstruct.=  "</table>
-                                        </section>";
+                 $usertableconstruct.=  "</table></section>";
 
     echo $usertableconstruct;
 }
