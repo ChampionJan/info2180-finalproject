@@ -13,59 +13,104 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 $formconstruct = 
-" <form id='contactform'>
-        <h3 class='formtitle'>New Contact</h3>
-            <div class='newcontactstat'> </div>
-            <div class='formstatus'> </div>
-            <div class='formgrp'> 
-                <label for='title'>Title</label>
-                <select class='inputnormal' name='title' id='title'>
-                    <option value='Mr'>Mr.</option>
-                    <option value='Ms'>Ms.</option>
-                    <option value='Mrs'>Mrs.</option>
-                    <option value='Dr'>Dr.</option>
-                    <option value='Prof'>Prof.</option>
-                </select>
-            </div>
-            <div class='formgrp'> 
-                <label>First Name</label>
-                <input id ='firstname' class='inputnormal' type='text' placeholder='Jane' name='firstname' required>
-            </div>
-            <div class='formgrp'> 
-                <label>Last Name</label>
-                <input id ='lastname' class='inputnormal' type='text' placeholder='Doe' name='lastname' required>
-            </div>
-            <div class='formgrp'> 
-                <label>Email</label>
-                <input id ='email' class='inputnormal' type='text' placeholder='something@example.com' name='email' required>
-            </div>
-            <div class='formgrp'> 
-                <label>Telephone</label>
-                <input id ='telephone' class='inputnormal' type='text' name='telephone' required>
-            </div>
-            <div class='formgrp'> 
-                <label>Company</label>
-                <input id ='company' class='inputnormal' type='text' name='company' required>
-            </div>
-            <div class='formgrp'> 
-                <label for='Type'>Type</label>
-                <select class='inputnormal' name='type' id='type'>
-                    <option value='Sales Lead'>Sales Lead</option>
-                    <option value='Support'>Support</option>
-                </select>
-            </div>
-            <div class='formgrp'> 
-                <label for='assign'>Assigned To</label>
-                <select class='inputnormal' name='assign' id='assign'>";
-
-                foreach($users as $user){
-                  $formconstruct .= "<option value= \"{$user['firstname']} {$user['lastname']} \"> {$user['firstname']} {$user['lastname']} </option> ";  
-               }
-             $formconstruct.= 
-             "</select>
-            </div>
-            <button type= 'submit' name='addcontactbtn' id='addcontactbtn'> Save </button>
-        </form>";
+" <section class=\"formheadparent\">
+<h2 class='formtitle'>New Contact</h2>
+<div class='newcontactstat'> </div>
+<div class='formstatus'> </div>
+  </section>
+  <section class=\"formfootparent\">
+    <table id= 'contactformtable'>
+        <form id='contactform'>
+            <tr>
+                <td>
+                    <label for='title'>Title</label>
+                </td>
+            </tr>
+            <tr>
+                <td>   
+                    <select class='inputnormal contactinput' name='title' id='title'>
+                        <option value='Mr'>Mr.</option>
+                        <option value='Ms'>Ms.</option>
+                        <option value='Mrs'>Mrs.</option>
+                        <option value='Dr'>Dr.</option>
+                        <option value='Prof'>Prof.</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>First Name</label>
+                </td>
+                <td>
+                    <label>Last Name</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id ='firstname' class='inputnormal contactinput' type='text' placeholder='Jane' name='firstname' required>
+                </td>
+                <td>
+                    <input id ='lastname' class='inputnormal contactinput' type='text' placeholder='Doe' name='lastname' required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Email</label>
+                </td>
+                <td>
+                    <label>Telephone</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id ='email' class='inputnormal contactinput' type='text' placeholder='something@example.com' name='email' required>
+                </td>
+                <td>
+                    <input id ='telephone' class='inputnormal contactinput' type='text' name='telephone' required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Company</label>
+                </td>
+                <td>
+                    <label for='Type'>Type</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id ='company' class='inputnormal contactinput' type='text' name='company' required>
+                </td>
+                <td>
+                    <select class='inputnormal contactinput' name='type' id='type'>
+                        <option value='Sales Lead'>Sales Lead</option>
+                        <option value='Support'>Support</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for='assign'>Assigned To</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select class='inputnormal contactinput' name='assign' id='assign'>";
+                        foreach($users as $user){
+                            $formconstruct .= "<option value= \"{$user['firstname']} {$user['lastname']} \"> {$user['firstname']} {$user['lastname']} </option> ";  
+                        }
+                        $formconstruct.= 
+                            "</select>
+                            </td>
+                            </tr>
+            <tr class='buttonrow'>
+                <td>
+                </td>
+                <td>
+                    <button type= 'submit' name='addcontactbtn' id='addcontactbtn'> Save </button>
+                </td>
+            </tr>
+        </form></table></section>";
 
         echo $formconstruct;
 

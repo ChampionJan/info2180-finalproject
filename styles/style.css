@@ -88,6 +88,10 @@ section#changearea form {
     justify-self: center;
 }
 
+section#changearea form#contactform{
+    width: 90%;
+}
+
 section#changearea form h1.formtitle{
     text-align: center;
     font-size: 2em;
@@ -109,9 +113,18 @@ section#changearea form h1.formtitle{
     border-radius: 0.5em;
     border:none;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    margin-top:0.5em;
     margin-bottom:1em;
     padding-left: 1em;
 }
+
+.contactinput{
+    width: 90%;
+  }
+
+  #title.contactinput {
+    width: 15%;
+  }
 
 button#submitbtn{
     background: #4f46e5;
@@ -250,7 +263,7 @@ table#contacttable tr td#SalesLead span{
     padding:0 1em 0 1em;
 }
 
-section.contactlistheadparent, section.userlistheadparent{
+section.contactlistheadparent, section.userlistheadparent, section.formheadparent{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -263,7 +276,7 @@ section.contactlistheadparent h1.contactlisthead, section.userlistheadparent h1.
     font-size: 3em;
 }
 
-section.contactlistheadparent button#createcontactbtn, section.userlistheadparent button#createuserbtn{
+section.contactlistheadparent button#createcontactbtn, section.userlistheadparent button#createuserbtn, section.formfootparent button#addcontactbtn{
     padding: .5em;
     border:none;
     border-radius: .2em;
@@ -272,14 +285,14 @@ section.contactlistheadparent button#createcontactbtn, section.userlistheadparen
     background:#4f46e5;
 }
 
-section.contactlistheadparent button#createcontactbtn:hover, section.userlistheadparent button#createuserbtn:hover{
+section.contactlistheadparent button#createcontactbtn:hover, section.userlistheadparent button#createuserbtn:hover, section.formfootparent button#addcontactbtn:hover{
     background: #fff;
     color: #4f46e5;
     border: solid #4f46e5 .2em;
     cursor: pointer;
 }
 
-section.contactlistfootparent, section.userlistfootparent{
+section.contactlistfootparent, section.userlistfootparent, section.formfootparent{
     background: #fff;
     justify-content: space-between;
     width: 90%;
@@ -341,4 +354,23 @@ section#filter button {
     color: #6366f1!important;
     text-decoration: underline #6366f1;
     text-decoration-thickness: 2.5px;
+  }
+
+  table#contactformtable{
+    width: 95%;
+    margin: 2em;
+  }
+
+  section.formfootparent tr.buttonrow{
+    background-color: #f9fafb;
+  }
+
+  section.formfootparent tr.buttonrow td{
+    text-align: right;
+  }
+
+  section.formfootparent button#addcontactbtn{
+    width: 4em;
+    border-radius: 0.4em;
+    margin: 1em 4em;
   }
