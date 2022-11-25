@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
         ':id' => $contact['created_by']
   ));
   $creator = $creatorstmt->fetch(PDO::FETCH_ASSOC);
-  $createdday = date('F n, Y',strtotime($contact['created_at']));
+  $createdday = date('F j, Y',strtotime($contact['created_at']));
 
   $contact_id = $id;
   $notessql = "SELECT * FROM notes WHERE contact_id = :contact_id";
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
   if($updated == "0000-00-00 00:00:00"){
     $updated = "- -";
   } else{
-    $updated= date('F n, Y',strtotime($updated));
+    $updated= date('F j, Y',strtotime($updated));
   }
 
   $otherrole = "Support";
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
 
                         if($contactnote['contact_id'] == $contact['id']){
                             $notecreatorname = "";
-                            $notedate = date('F n, Y',strtotime($contactnote['created_at']));
+                            $notedate = date('F j, Y',strtotime($contactnote['created_at']));
                             $notetime = date('g a',strtotime($contactnote['created_at']));
                             $notecreator = $contactnote['created_by'];
                             foreach($allusers as $oneuser){

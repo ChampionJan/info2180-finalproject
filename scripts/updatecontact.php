@@ -17,7 +17,7 @@ $contactsql = "SELECT * FROM contacts WHERE id = :id";
       ':id' => $contactid
   ));
 $contact = $contactstmt->fetch(PDO::FETCH_ASSOC);
-$updatedday= date('F n, Y',strtotime($updated));
+$updatedday= date('F j, Y',strtotime($updated));
 $updatedtime = date('h:i A',strtotime($updated));
 
 $updater_id = $_SESSION['uid'];

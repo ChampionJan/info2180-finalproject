@@ -11,6 +11,7 @@ window.addEventListener("load", event =>{
             const cleanUrl2 = "scripts/newnote.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
             let comment = document.getElementById("comment");
             const formstatus = document.getElementById("notestatus");
+            const contactnotes = document.getElementById("contactnotes");
 
             addnotebtn.onclick = (event)=>{
                 event.preventDefault();
@@ -53,6 +54,20 @@ window.addEventListener("load", event =>{
                             formstatus.classList.remove("fail");
                             formstatus.innerHTML = "New note added successfully! Press a button to continue."
                             updated.innerHTML= resp.substring(0, resp.indexOf('*'));
+                            const contactArray = contactnotes.innerHTML.split("</p></div>");
+                            let newNote = resp.substring(resp.indexOf('*') + 1);
+                            contactArray.splice(-1, 0, newNote);
+                            contactnotes.innerHTML = "";
+                            let length = contactArray.length;
+                            contactArray.forEach(addOn);
+
+                            function addOn(item,index) {
+                                if(index != (length-1)){
+                                    contactnotes.innerHTML += item + "</p></div>";
+                                } else{
+                                    contactnotes.innerHTML += item;
+                                }
+                              }
                         }
 
                         comment.classList.remove("txtAErr");
