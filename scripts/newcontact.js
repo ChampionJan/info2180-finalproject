@@ -3,7 +3,6 @@ window.addEventListener("load", event =>{
     const newcontact =  document.querySelector("aside div.menu button#newcontact");
     const changearea= document.querySelector("section#changearea");
     const cleanUrl = "scripts/getcontactform.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
-    const parserObj = new DOMParser();
 
     let contactForm = setInterval( ()=>{
         if(document.contains(document.getElementById("contactform"))){

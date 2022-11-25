@@ -1,12 +1,11 @@
 window.addEventListener("load", event => {
-    //const adduser =  document.querySelector("section#changearea section#userlistheaduniverse section.userlistheadparent button#createuserbtn");
+    const adduser =  document.getElementById("createuserbtn");
     const changearea= document.querySelector("section#changearea");
-    //const cleanUrl = "scripts/getuserform.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
-    //const parserObj = new DOMParser();
+    const cleanUrl = "scripts/getuserform.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
 
     setInterval( ()=>{
 
-        const adduser =  document.querySelector("section#changearea section#userlistheaduniverse section.userlistheadparent button#createuserbtn");
+        const adduser =  document.getElementById("createuserbtn");
         const getformUrl = "scripts/getuserform.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
         if (document.contains(adduser)){
             adduser.onclick= (event) =>{

@@ -88,7 +88,7 @@ section#changearea form {
     justify-self: center;
 }
 
-section#changearea form#contactform{
+section#changearea form#contactform, section#changearea form#userform{
     width: 90%;
 }
 
@@ -119,6 +119,10 @@ section#changearea form h1.formtitle{
 }
 
 .contactinput{
+    width: 90%;
+  }
+
+  .userinput{
     width: 90%;
   }
 
@@ -263,7 +267,7 @@ table#contacttable tr td#SalesLead span{
     padding:0 1em 0 1em;
 }
 
-section.contactlistheadparent, section.userlistheadparent, section.formheadparent{
+section.contactlistheadparent, section.userlistheadparent, section.formheadparent, section#contacthead, section#contactinfo{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -276,7 +280,7 @@ section.contactlistheadparent h1.contactlisthead, section.userlistheadparent h1.
     font-size: 3em;
 }
 
-section.contactlistheadparent button#createcontactbtn, section.userlistheadparent button#createuserbtn, section.formfootparent button#addcontactbtn{
+section.contactlistheadparent button#createcontactbtn, section.userlistheadparent button#createuserbtn, section.formfootparent button#addcontactbtn, button#addnotebtn, section.formfootparent button#adduserbtn{
     padding: .5em;
     border:none;
     border-radius: .2em;
@@ -285,13 +289,31 @@ section.contactlistheadparent button#createcontactbtn, section.userlistheadparen
     background:#4f46e5;
 }
 
-section.contactlistheadparent button#createcontactbtn:hover, section.userlistheadparent button#createuserbtn:hover, section.formfootparent button#addcontactbtn:hover{
+section.contactlistheadparent button#createcontactbtn:hover, section.userlistheadparent button#createuserbtn:hover, section.formfootparent button#addcontactbtn:hover, button#addnotebtn:hover, section.formfootparent button#adduserbtn:hover{
     background: #fff;
     color: #4f46e5;
     border: solid #4f46e5 .2em;
     cursor: pointer;
 }
 
+section.contactlistheadparent button#createcontactbtn, section.userlistheadparent button#createuserbtn{
+    display: inline-flex;
+    align-items: center;
+}
+
+section.contactlistheadparent button#createcontactbtn svg, section.userlistheadparent button#createuserbtn svg{
+    width: 15px;
+    height: auto;
+    margin: 0 2em 0 1em;
+    fill: #fff;
+}
+section.contactlistheadparent button#createcontactbtn:hover svg, section.userlistheadparent button#createuserbtn:hover svg{
+    fill: #4f46e5;
+}
+
+section.userlistheadparent button#createuserbtn{
+    width: 11em;
+}
 section.contactlistfootparent, section.userlistfootparent, section.formfootparent{
     background: #fff;
     justify-content: space-between;
@@ -356,7 +378,7 @@ section#filter button {
     text-decoration-thickness: 2.5px;
   }
 
-  table#contactformtable{
+  table#contactformtable, table#userformtable{
     width: 95%;
     margin: 2em;
   }
@@ -369,8 +391,176 @@ section#filter button {
     text-align: right;
   }
 
-  section.formfootparent button#addcontactbtn{
+  section.formfootparent button#addcontactbtn, section.formfootparent button#adduserbtn{
     width: 4em;
     border-radius: 0.4em;
     margin: 1em 4em;
+  }
+
+
+  div#contactpage{
+    width: 100%;
+    background-color: #fff;
+  }
+
+  div#contactparent{
+    background-color: #fff;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-self: center;
+  }
+
+  section#contacthead img{
+    max-width: 3em;
+    height: auto;
+    background-color: #d1d5db;
+    border-radius: 100%;
+    margin-right: 0.5em;
+}
+
+div#contactdetails{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+table#contactinfotable{
+    width: 95%;
+    margin: 2em;
+  }
+
+  table#contactinfotable tr:nth-child(2) > td{
+    padding-bottom: 2em;
+  }
+
+  table#contactinfotable span.label{
+    font-weight: bold;
+  }
+
+  section#contactnotes{
+    justify-content: space-between;
+    width: 90%;
+    margin-top:2em;
+  }
+
+  section#contactinfo, section#contactnotes{
+    border: solid 2px #c3c3c3;
+    border-radius: .4em;
+  }
+
+
+  section#contactnotes div{
+    width: 100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  section#contactnotes div:first-child{
+    display: flex;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  section#contactnotes div:last-child{
+    margin-bottom: 0;
+  }
+
+  section#contactnotes svg{
+    width: 25px;
+    height: auto;
+    padding-right: 0.5em;
+  }
+
+  section#contactnotes div:last-child{
+    background-color: #f3f4f6;
+  }
+
+  form#noteform{
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  table#noteformtable tr:nth-child(1) > td{
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  textarea#comment{
+    width: 100%;
+  }
+
+  table#notebuttontable td:last-child{
+    text-align: right;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  button#addnotebtn{
+    width: 90px;
+    border-radius: 0.4em;
+  }
+
+  button#assigntome{
+    border-radius: 0.4em;
+    padding: .5em;
+    border:none;
+    width: 12em;
+    height: 40px;
+    color: #000;
+    background:#4ade80;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  button#assigntome:hover{
+    background: #fff;
+    color: #4ade80;
+    border: solid #4ade80 .2em;
+    cursor: pointer;
+    height: 40px;
+  }
+
+  button#assigntome img{
+    background-color: #4ade80;
+    width: 20px;
+    height: auto;
+    margin-left: 1em;
+  }
+
+  button#assigntome:hover img{
+    background-color: #fff;
+
+  }
+
+  button#switchtoother{
+    border-radius: 0.4em;
+    padding: .5em;
+    border:none;
+    width: 14em;
+    color: #000;
+    background:#fbbf24;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  button#switchtoother:hover{
+    background: #fff;
+    color: #fbbf24;
+    border: solid #fbbf24 .2em;
+    cursor: pointer;
+  }
+
+  button#switchtoother svg{
+    width: 25px;
+    height: auto;
+    padding-right: 0.5em;
+    margin-left: 0.5em;
   }
