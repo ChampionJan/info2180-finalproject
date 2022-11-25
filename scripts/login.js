@@ -9,9 +9,9 @@ window.addEventListener("load", event => {
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
     
     const errors =[
-        "This account was not found, Contact your administrator for help.",
-        "Invalid Password, check your info and try again",
-        "You did not provide a valid, please check and try again",
+        "This account was not found. Contact your administrator for help.",
+        "Invalid Password. Check your info and try again",
+        "You did not provide a valid email, please check and try again",
         "We are unable to start your session at this time. Try again later"
     ];
     submitbtn.addEventListener("click", event => {
@@ -74,6 +74,15 @@ window.addEventListener("load", event => {
                     formstatus.classList.remove("hide");
                     formstatus.classList.add("fail");
                     formstatus.innerHTML = errors[parseInt(resp)];
+                    if(parseInt(first) === 0){
+                        formstatus.classList.remove("hide");
+                        formstatus.classList.remove("success");
+                        formstatus.classList.add("fail");
+                        emailField.classList.remove("inputnormal");
+                        emailField.classList.add("inputerror");
+                        passwordField.classList.remove("inputerror");
+                        passwordField.classList.add("inputnormal");
+                    }
                 }
                 else if (parseInt(first) === 4){
                     let usercheck = setInterval( ()=>{

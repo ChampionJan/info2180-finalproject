@@ -16,7 +16,6 @@ $formconstruct =
 " <section class=\"formheadparent\">
 <h2 class='formtitle'>New Contact</h2>
 <div class='newcontactstat'> </div>
-<div class='formstatus'> </div>
   </section>
   <section class=\"formfootparent\">
     <table id= 'contactformtable'>
@@ -101,6 +100,9 @@ $formconstruct =
                         }
                         $formconstruct.= 
                             "</select>
+                            </td>
+                            <td>
+                                <div class='formstatus' id='contactstatus'> </div>
                             </td>
                             </tr>
             <tr class='buttonrow'>

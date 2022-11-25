@@ -19,15 +19,15 @@ window.addEventListener("load", event => {
     },1000);      
     
     let newuserform = setInterval( ()=>{
-        if (document.contains(document.getElementById("newuserform"))){
-            const createuserbtn = document.querySelector("form#newuserform button#adduserbtn");
+        if (document.contains(document.getElementById("userform"))){
+            const createuserbtn = document.getElementById("adduserbtn");
             const cleanUrl = "scripts/newuser.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
-            const firstname = document.querySelector("form#newuserform input#firstname");
-            const lastname = document.querySelector("form#newuserform input#lastname");
-            const email = document.querySelector("form#newuserform input#email");
-            const password = document.querySelector("form#newuserform input#password");
-            const role = document.querySelector("form#newuserform select#role");
-            const formstatus = document.querySelector("section#changearea form div.adduserstat");
+            const firstname = document.getElementById("firstname");
+            const lastname = document.getElementById("lastname");
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+            const role = document.getElementById("role");
+            const formstatus = document.getElementById("userstatus");
             const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
             const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
             let errors =[
@@ -53,7 +53,7 @@ window.addEventListener("load", event => {
                     password.classList.add("inputnormal");
                     lastname.classList.remove("inputerror");
                     lastname.classList.add("inputnormal");
-                    formstatus.innerHTML = "You must enter a firstname";
+                    formstatus.innerHTML = "You must enter a firstname.";
                     return;
                 }
 
@@ -69,7 +69,7 @@ window.addEventListener("load", event => {
                     password.classList.add("inputnormal");
                     lastname.classList.remove("inputnormal");
                     lastname.classList.add("inputerror");
-                    formstatus.innerHTML = "You must enter a lastname";
+                    formstatus.innerHTML = "You must enter a lastname.";
                     return;
                 }
 
@@ -102,7 +102,7 @@ window.addEventListener("load", event => {
                     lastname.classList.add("inputnormal");
                     email.classList.remove("inputerror");
                     email.classList.add("inputnormal");
-                    formstatus.innerHTML = "Check your password field and try again. Your password must be atleast 8 characters, with atleast 1 capital letter, lowercase letter and number.";
+                    formstatus.innerHTML = "Your password must be at least 8 characters, with at least 1 capital letter, lowercase letter and number.";
                     return;
                 }
                 else{

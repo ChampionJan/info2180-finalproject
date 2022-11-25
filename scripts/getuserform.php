@@ -9,7 +9,6 @@ else {
 echo " <section class=\"formheadparent\">
             <h2 class='formtitle'>New User</h2>
                 <div class='newuserstat'> </div>
-                <div class='formstatus'> </div>
         </section>
         <section class=\"formfootparent\">
             <table id= 'userformtable'>
@@ -57,6 +56,9 @@ echo " <section class=\"formheadparent\">
                                 <option value='Member'>Member</option>
                                 <option value='Admin'>Admin</option>
                             </select>
+                        </td>
+                        <td>
+                            <div class='formstatus' id='userstatus'> </div>
                         </td>
                     </tr>
                     <tr class='buttonrow'>

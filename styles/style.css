@@ -69,6 +69,7 @@ div.menu button{
     display: flex;
     align-items: center;
     width: 100%;
+    cursor:pointer;
 }
 
 div.menu button:hover{
@@ -131,6 +132,16 @@ section#changearea form h1.formtitle{
     padding-left: 1em;
 }
 
+.inputerror{
+  height:3em;
+  border-radius: 0.5em;
+  border: 1px solid red;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  margin-top:0.5em;
+  margin-bottom:1em;
+  padding-left: 1em;
+}
+
 .contactinput{
     width: 90%;
   }
@@ -191,9 +202,30 @@ footer hr{
     margin-bottom: 2em;
 }
 
-
 .hide{
     display: none;
+}
+
+.fail{
+  display: block;
+  background: #ff9494;
+  color: #8B0000;
+  margin-bottom: 1em;
+  padding: .5em;
+  border-radius: 1em;
+}
+
+div#userstatus, div#contactstatus{
+  width: 90%;
+}
+
+.success{
+  display: block;
+  background: #4bb543;
+  color: #000;
+  margin-bottom: 1em;
+  padding: .5em;
+  border-radius: 1em;
 }
 
 .asidestyle hr{
