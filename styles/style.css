@@ -53,13 +53,26 @@ header img{
     flex-flow: row nowrap;
     padding: .5em;
 }
+
+div.menu{
+    width: 100%;
+}
 header img{
     width: 2em;
     margin-right: 1em;
 }
 aside div.menu img{
-     width: 1.3em;
-     margin-right: .7em;
+     width: 4em;
+}
+
+div.menu button{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+div.menu button:hover{
+    background-color: #f3f4f6;
 }
 
 aside div.menu button{
@@ -296,7 +309,7 @@ section.contactlistheadparent button#createcontactbtn:hover, section.userlisthea
     cursor: pointer;
 }
 
-section.contactlistheadparent button#createcontactbtn, section.userlistheadparent button#createuserbtn{
+section.contactlistheadparent button#createcontactbtn, section.userlistheadparent button#createuserbtn, section#filter{
     display: inline-flex;
     align-items: center;
 }
@@ -326,6 +339,13 @@ section#filter span{
     font-weight: bold;
 }
 
+section#filter svg{
+    width: 20px;
+    height: auto;
+    transform: scaleX(-1); 
+    margin-right: 0.7em;
+}
+
 section.contactlistfootparent table, section.userlistfootparent table{
     width: 95%;
     border-spacing: 0;
@@ -343,7 +363,7 @@ section.contactlistfootparent table tr:last-child > td, section.userlistfootpare
   }
 
 section#filter{
-    padding-top: 2em;
+    margin-top: 1em;
     padding-left: 2em;
 }
 
@@ -534,7 +554,6 @@ table#contactinfotable{
 
   button#assigntome:hover img{
     background-color: #fff;
-
   }
 
   button#switchtoother{
