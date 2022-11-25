@@ -12,33 +12,28 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
         ));
         $supportcontacts = $supportstmt->fetchAll(PDO::FETCH_ASSOC);
         $tableconstruct= "
-            <section class=\"contactlistheadparent\">
-                <h2 class=\"contactlisthead\"> Dashboard </h2>
-                <button id=\"createcontactbtn\"> Add Contact </button>
-            </section>
-            <section id=\"filter\"> 
-                <span>Filter by: </span>
-                <button id=\"all\"> All </button>
-                <button id=\"SalesLeads\"> Sales Leads </button>
-                <button id=\"Support\"> Support </button>
-                <button id=\"assigned\"> Assigned to me </button>
-            </section>
-            <table id='contacttable'>
-                <thead>
-                    <th>Name</th> 
-                    <th>Email</th>
-                    <th>Company</th> 
-                    <th>Type</th>  
-                </thead>";
+        <section class=\"contactlistheadparent\">
+        <h2 class=\"contactlisthead\"> Dashboard </h2>
+        <button id=\"createcontactbtn\"> <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path d=\"M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z\"/></svg> Add Contact </button>
+    </section>
+    <section class=\"contactlistfootparent\">
+    <section id=\"filter\"> 
+    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path d=\"M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z\"/></svg>
+        <span>Filter by: </span>
+        <button id=\"all\"> All </button>
+        <button id=\"SalesLeads\"> Sales Leads </button>
+        <button id=\"Support\" class=\"active\"> Support </button>
+        <button id=\"assigned\"> Assigned to me </button>
+    </section>
+    <table id='contacttable'>
+        <thead>
+            <th>Name</th> 
+            <th>Email</th>
+            <th>Company</th> 
+            <th>Type</th>  
+        </thead>";
     
                 foreach($supportcontacts as $supportcontact){
-                    $namesql = "SELECT * FROM users WHERE id = :id";
-                    $namestmt = $conn -> prepare($namesql);
-                    $namestmt->execute(array(
-                        ':id' => $supportcontact['assigned_to']
-                    ));
-                    $user = $namestmt->fetch(PDO::FETCH_ASSOC);
-
                     $typeid="";
                     if($supportcontact['type'] == "Support"){
                         $typeid = "Support";
@@ -56,11 +51,11 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                     </tr>";  
                  }
     
-                 $tableconstruct.=  "</table>";
+                 $tableconstruct.=  "</table></section>";
 
     }
     else if($_GET['btn'] == "SalesLeads"){
-        $type = "Sales Leads";
+        $type = "Sales Lead";
         $salesleadssql = "SELECT * FROM contacts WHERE type = :type";
         $salesleadsstmt = $conn->prepare($salesleadssql);
         $salesleadsstmt->execute(array(
@@ -68,34 +63,28 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
         ));
         $salesleadscontacts = $salesleadsstmt->fetchAll(PDO::FETCH_ASSOC);
         $tableconstruct= "
-           <section id=\"contactlistheaduniverse\">
-            <section class=\"contactlistheadparent\">
-                <h2 class=\"contactlisthead\"> Dashboard </h2>
-                <button id=\"createcontactbtn\"> Add Contact </button>
-            </section>
-            <section id=\"filter\"> 
-                <span>Filter by: </span>
-                <button id=\"all\"> All </button>
-                <button id=\"SalesLeads\"> Sales Leads </button>
-                <button id=\"Support\"> Support </button>
-                <button id=\"assigned\"> Assigned to me </button>
-            </section></section>
-            <table id='contacttable'>
-                <thead>
-                    <th>Name</th> 
-                    <th>Email</th>
-                    <th>Company</th> 
-                    <th>Type</th>  
-                </thead>";
+        <section class=\"contactlistheadparent\">
+        <h2 class=\"contactlisthead\"> Dashboard </h2>
+        <button id=\"createcontactbtn\"> <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path d=\"M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z\"/></svg> Add Contact </button>
+    </section>
+    <section class=\"contactlistfootparent\">
+    <section id=\"filter\"> 
+    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path d=\"M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z\"/></svg>
+        <span>Filter by: </span>
+        <button id=\"all\"> All </button>
+        <button id=\"SalesLeads\" class=\"active\"> Sales Leads </button>
+        <button id=\"Support\"> Support </button>
+        <button id=\"assigned\"> Assigned to me </button>
+    </section>
+    <table id='contacttable'>
+        <thead>
+            <th>Name</th> 
+            <th>Email</th>
+            <th>Company</th> 
+            <th>Type</th>  
+        </thead>";
     
                 foreach($salesleadscontacts as $salesleadscontact){
-                    $namesql = "SELECT * FROM users WHERE id = :id";
-                    $namestmt = $conn -> prepare($namesql);
-                    $namestmt->execute(array(
-                        ':id' => $salesleadscontact['assigned_to']
-                    ));
-                    $user = $namestmt->fetch(PDO::FETCH_ASSOC);
-
                     $typeid="";
                     if($salesleadscontact['type'] == "Support"){
                         $typeid = "Support";
@@ -113,45 +102,40 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                     </tr>";  
                  }
     
-                 $tableconstruct.=  "</table>";
+                 $tableconstruct.=  "</table></section>";
 
     }
     else if($_GET['btn'] == "assigned"){
         $myid = $_SESSION['uid'];
         $myctssql = "SELECT * FROM contacts WHERE assigned_to = :myid";
-        $myctsstmt = $conn->prepare($mytkssql);
+        $myctsstmt = $conn->prepare($myctssql);
         $myctsstmt->execute(array(
             ':myid' => $myid
         ));
         $mycontacts = $myctsstmt->fetchAll(PDO::FETCH_ASSOC);
         $tableconstruct= "
-           <section id=\"contactlistheaduniverse\">
-            <section class=\"contactlistheadparent\">
-                <h2 class=\"contactlisthead\"> Dashboard </h2>
-                <button id=\"createcontactbtn\"> Add Contact </button>
-            </section>
-            <section id=\"filter\"> 
-                <span>Filter by: </span>
-                <button id=\"all\"> All </button>
-                <button id=\"SalesLeads\"> Sales Leads </button>
-                <button id=\"Support\"> Support </button>
-                <button id=\"assigned\"> Assigned to me </button>
-            </section></section>
-            <table id='contacttable'>
-                <thead>
-                    <th>Name</th> 
-                    <th>Email</th>
-                    <th>Company</th> 
-                    <th>Type</th>  
-                </thead>";
+        <section class=\"contactlistheadparent\">
+        <h2 class=\"contactlisthead\"> Dashboard </h2>
+        <button id=\"createcontactbtn\"> <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path d=\"M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z\"/></svg> Add Contact </button>
+    </section>
+    <section class=\"contactlistfootparent\">
+    <section id=\"filter\"> 
+    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path d=\"M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z\"/></svg>
+        <span>Filter by: </span>
+        <button id=\"all\"> All </button>
+        <button id=\"SalesLeads\"> Sales Leads </button>
+        <button id=\"Support\"> Support </button>
+        <button id=\"assigned\" class=\"active\"> Assigned to me </button>
+    </section>
+    <table id='contacttable'>
+        <thead>
+            <th>Name</th> 
+            <th>Email</th>
+            <th>Company</th> 
+            <th>Type</th>  
+        </thead>";
     
                 foreach($mycontacts as $mycontact){
-                    $namesql = "SELECT * FROM users WHERE id = :id";
-                    $namestmt = $conn -> prepare($namesql);
-                    $namestmt->execute(array(
-                        ':id' => $mycontact['assigned_to']
-                    ));
-                    $user = $namestmt->fetch(PDO::FETCH_ASSOC);
                     $typeid="";
                     if($mycontact['type'] == "Support"){
                         $typeid = "Support";
@@ -169,7 +153,7 @@ if (isset($_SESSION['first_name'])&& isset($_SESSION['last_name'])){
                     </tr>";  
                  }
     
-                 $tableconstruct.=  "</table>";
+                 $tableconstruct.=  "</table></section>";
         
     }
     else if ($_GET['btn'] == "all"){

@@ -134,7 +134,7 @@ window.addEventListener("load", event => {
                             formstatus.classList.remove("hide");
                             formstatus.classList.remove("fail");
                             formstatus.classList.add("success");
-                            formstatus.innerHTML = "New user added successfully!"
+                            formstatus.innerHTML = "New user added successfully! Press a button to continue."
 
                         }
                         else{

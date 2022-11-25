@@ -41,16 +41,18 @@ window.addEventListener("load", event =>{
                         formstatus.classList.remove("hide");
                         formstatus.classList.remove("fail");
                         formstatus.classList.add("success");
-                        console.log(resp);
-                        if (resp == "OK"){
-                            formstatus.classList.add("success");
-                            formstatus.classList.remove("fail");
-                            formstatus.innerHTML = "New note added successfully!"
-                        }
-                        else if(resp == "NO"){
+                        if(resp == "NO"){
                             formstatus.classList.remove("success");
                             formstatus.classList.add("fail");
                             formstatus.innerHTML = "Unable to create note.";
+                        }else if(resp == "We can't process your request at this time"){
+                            formstatus.innerHTML = "We can't process your request at this time";
+                        }
+                        else{
+                            formstatus.classList.add("success");
+                            formstatus.classList.remove("fail");
+                            formstatus.innerHTML = "New note added successfully! Press a button to continue."
+                            updated.innerHTML= resp.substring(0, resp.indexOf('*'));
                         }
 
                         comment.classList.remove("txtAErr");

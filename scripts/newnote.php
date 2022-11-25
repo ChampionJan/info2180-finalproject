@@ -1,10 +1,22 @@
 <?php
 session_start();
 require "dbconnect.php";
-$cleanedcomment= "";
-$createdby = $_SESSION['uid'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    $cleanedcomment= "";
+    $createdby = $_SESSION['uid'];
+    $contactid = $_GET['contactid'];
+    date_default_timezone_set('US/Eastern');
+    $updated =  date('Y-m-d H:i:s');
+    $contactsql = "SELECT * FROM contacts WHERE id = :id";
+    $contactstmt = $conn -> prepare($contactsql);
+    $contactstmt->execute(array(
+      ':id' => $contactid
+    ));
+    $contact = $contactstmt->fetch(PDO::FETCH_ASSOC);
+    $updatedday= date('F n, Y',strtotime($updated));
+    $updatedtime = date('h:i A',strtotime($updated));
 
     $jsn = file_get_contents('php://input');
     $data = json_decode($jsn);
@@ -22,7 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         ':comment' => $cleanedcomment,
         ':createdby' => $createdby) ) ) 
         {
-        echo "OK";
+            $timesql = "UPDATE contacts SET updated_at = :updated_at WHERE id = :id";
+            $timestmt = $conn -> prepare($timesql);
+            $timestmt->execute(array(
+                ':updated_at' => $updated,
+                ':id' => $contactid
+            ));   
+        echo "Updated on {$updatedday} * $cleanedcomment";
     }
     else{
         echo "NO";

@@ -22,7 +22,7 @@ window.addEventListener("load", (event)=>{
                     .then(resp => resp.text())
                     .then(resp=>{
                         console.log(resp);
-                        updated.innerHTML= resp.substring(0, resp.indexOf('*'))
+                        updated.innerHTML= resp.substring(0, resp.indexOf('*'));
                         assigned.innerHTML = resp.substring(resp.indexOf('*') + 1);
                     }) 
                      

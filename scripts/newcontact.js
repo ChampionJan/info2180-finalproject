@@ -169,7 +169,7 @@ window.addEventListener("load", event =>{
                         if (resp == "OK"){
                             formstatus.classList.add("success");
                             formstatus.classList.remove("fail");
-                            formstatus.innerHTML = "New contact added successfully!"
+                            formstatus.innerHTML = "New contact added successfully! Press a button to continue."
                         }
                         else if(resp == "NO"){
                             formstatus.classList.remove("success");
