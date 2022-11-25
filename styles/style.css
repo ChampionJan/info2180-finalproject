@@ -142,6 +142,13 @@ section#changearea form h1.formtitle{
   padding-left: 1em;
 }
 
+.txtANormal{
+  border: 1px solid black;
+}
+.txtAErr{
+  border: 1px solid red;
+}
+
 .contactinput{
     width: 90%;
   }
@@ -215,7 +222,7 @@ footer hr{
   border-radius: 1em;
 }
 
-div#userstatus, div#contactstatus{
+div#userstatus, div#contactstatus, div#notestatus{
   width: 90%;
 }
 

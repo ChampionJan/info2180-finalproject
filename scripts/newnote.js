@@ -7,10 +7,10 @@ window.addEventListener("load", event =>{
 
     let noteForm = setInterval( ()=>{
         if(document.contains(document.getElementById("noteform"))){
-            const addnotebtn = document.querySelector("form#noteform button#addnotebtn");
+            const addnotebtn = document.getElementById("addnotebtn");
             const cleanUrl2 = "scripts/newnote.php".replace( /"[^-0-9+&@#/%=~_|!:,.;\(\)]"/g,'');
             let comment = document.getElementById("comment");
-            const formstatus = document.querySelector("section#changearea form#noteform div.newnotestat");
+            const formstatus = document.getElementById("notestatus");
 
             addnotebtn.onclick = (event)=>{
                 event.preventDefault();
@@ -18,8 +18,9 @@ window.addEventListener("load", event =>{
                     formstatus.classList.remove("hide");
                     formstatus.classList.remove("success");
                     formstatus.classList.add("fail");
-                    descript.classList.remove("txtANormal");
-                    descript.classList.add("txtAErr");
+                    comment.classList.remove("txtANormal");
+                    comment.classList.add("txtAErr");
+                    formstatus.innerHTML = "You must enter a comment.";
                     return;
                 }
                 else{

@@ -162,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_SESSION['first_name'])&& isse
                     <table id='notebuttontable'>
                         <tr>
                             <td>
-                                <div class='formstatus'> </div>
+                                <div class='formstatus' id='notestatus'> </div>
                             </td>
                             <td>
                                 <button type= 'submit' name='addnotebtn' id='addnotebtn'> Add Note </button>
